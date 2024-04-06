@@ -41,6 +41,7 @@ const Home = () => {
     setShowAllBooks(!showAllBooks);
     setShowBook(!showBook);
     setBookData(book)
+    // setData([])
   };
 
   const handleSearch = async () => {
@@ -56,7 +57,9 @@ const Home = () => {
   };
 
   const fetchHome = async () => {
-    // data=[]
+    // setShowAllBooks(!showAllBooks)
+    setShowBook(!showBook);
+    setShowAllBooks(!showAllBooks)
     try {
       const response1 = await axios.get(
         "https://www.googleapis.com/books/v1/volumes?q=harry+potter"
@@ -97,11 +100,11 @@ const Home = () => {
             </div>
           </div>
           <div className="navbar-profile-container">
-            <p>
-              <IoMdNotificationsOutline />
+            <p className="navbar-profile-notification">
+              <IoMdNotificationsOutline size={26}/>
             </p>
-            <p>
-              <CgProfile />
+            <p className="navbar-profile-pic">
+              <CgProfile size={26}/>
             </p>
           </div>
         </div>
@@ -109,9 +112,11 @@ const Home = () => {
       <div className="home">
         <div className="home-container">
           <div className="home-container-heading">
-            <h3>Books</h3>
+            {/* <h3>Books</h3> */}
           </div>
           {showAllBooks ? (
+            <>
+            <h3>Books</h3>
             <div className="home-container-data">
               {data &&
                 data.map((item) => (
@@ -127,6 +132,7 @@ const Home = () => {
                   </div>
                 ))}
             </div>
+            </>
           ) : (
             ""
           )}
@@ -134,8 +140,8 @@ const Home = () => {
         {showBook ? (
           <div>
             {bookData ? (
-              <div>
-                {/* <h2>{bookData.volumeInfo.title}</h2> */}
+              <div className="book-data">
+                <h2>{bookData.volumeInfo.title}</h2>
                 <p>Author: {bookData.volumeInfo.authors.join(", ")}</p>
                 <p>Publisher: {bookData.volumeInfo.publisher}</p>
                 <p>Published Date: {bookData.volumeInfo.publishedDate}</p>

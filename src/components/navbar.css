@@ -19,6 +19,9 @@
     flex-direction: row;
     align-items: center;
 }
+.navbar-logo-container:hover{
+    cursor: pointer;
+}
 
 .navbar-logo-image{
     height: 6vh;
@@ -55,4 +58,12 @@
     display: flex;
     flex-direction: row;
     padding-left: 20px;
+}
+
+.navbar-profile-notification, .navbar-profile-pic{
+    display: flex;
+    flex-direction: row;
+    /* height: 100px; */
+    padding-left: 10px;
+    padding-right: 20px;
 }
